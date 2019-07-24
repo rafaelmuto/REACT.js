@@ -3,19 +3,32 @@ import './App.css';
 
 import UserInput from './UserInput/UserInput';
 import UserOutput from './UserOutput/UserOutput';
+import Person from './Person/Person';
 
 class App extends Component {
   state = {
-    username: 'dummyUserName'
+    username: 'dummyUserName',
+    personname: 'dummyPersonName'
   };
 
-  usernameChangerHandler = event => {
+  nameChangerHandler = event => {
     this.setState({ username: event.target.value });
+  };
+
+  personChangerHandler = evet => {
+    this.setState({ personname: evet.target.value });
   };
 
   render() {
     return (
       <div className="App">
+        <Person nameChanger={this.personChangerHandler} personName={this.state.personname} />
+        <hr />
+        <UserInput changed={this.nameChangerHandler} currentName={this.state.username} />
+        <UserOutput userName={this.state.username} />
+        <UserOutput userName="julianasumiya" />
+        <UserOutput userName="caioverissimo" />
+        <hr />
         <ol>
           <li>DONE! Create TWO new components: UserInput and UserOutput</li>
           <li>DONE! UserInput should hold an input element, UserOutput two paragraphs</li>
@@ -29,10 +42,6 @@ class App extends Component {
           <li>DONE! Add styling of your choice to your components/ elements in the components - both with inline styles and stylesheets</li>
         </ol>
         <hr />
-        <UserInput changed={this.usernameChangerHandler} currentName={this.state.username} />
-        <UserOutput userName={this.state.username} />
-        <UserOutput userName="julianasumiya" />
-        <UserOutput userName="caioverissimo" />
       </div>
     );
   }
