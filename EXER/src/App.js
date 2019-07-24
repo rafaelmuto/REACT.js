@@ -8,7 +8,8 @@ import Person from './Person/Person';
 class App extends Component {
   state = {
     username: 'dummyUserName',
-    personname: 'dummyPersonName'
+    personname: 'dummyPersonName',
+    displayPersons: false
   };
 
   nameChangerHandler = event => {
@@ -19,13 +20,26 @@ class App extends Component {
     this.setState({ personname: evet.target.value });
   };
 
+  togglePersonsHandler = () => {
+    this.setState({ displayPersons: !this.state.displayPersons });
+  };
+
   render() {
     return (
       <div className="App">
-        <Person nameChanger={this.personChangerHandler} personName={this.state.personname} />
+        <hr />
+        <button onClick={this.togglePersonsHandler}>show me the persons!</button>
+        {this.state.displayPersons ? (
+          <div>
+            <Person nameChanger={this.personChangerHandler} personName={this.state.personname} />
+            <Person personName="Mr. Dummy Dummyster" />
+          </div>
+        ) : null}
+
         <hr />
         <UserInput changed={this.nameChangerHandler} currentName={this.state.username} />
         <UserOutput userName={this.state.username} />
+        <UserOutput userName="rafaelmuto" />
         <UserOutput userName="julianasumiya" />
         <UserOutput userName="caioverissimo" />
         <hr />
