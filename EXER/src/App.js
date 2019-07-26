@@ -9,7 +9,8 @@ class App extends Component {
   state = {
     username: 'dummyUserName',
     personname: 'dummyPersonName',
-    displayPersons: false
+    displayPersons: false,
+    persons: [{ name: 'dummyUser', age: 1 }, { name: 'Mr. Dummy Dummister', age: 64 }, { name: 'rafaelmuto', age: 33 }, { name: 'julianasumiya', age: 24 }]
   };
 
   nameChangerHandler = event => {
@@ -38,6 +39,10 @@ class App extends Component {
 
     return (
       <div className="App">
+        <hr />
+        {this.state.persons.map(person => {
+          return <Person personName={person.name} />;
+        })}
         <hr />
         <button onClick={this.togglePersonsHandler}>show me the persons!</button>
         {persons}
