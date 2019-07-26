@@ -25,17 +25,22 @@ class App extends Component {
   };
 
   render() {
+    let persons = null;
+
+    if (this.state.displayPersons) {
+      persons = (
+        <div>
+          <Person nameChanger={this.personChangerHandler} personName={this.state.personname} />
+          <Person personName="Mr. Dummy Dummyster" />
+        </div>
+      );
+    }
+
     return (
       <div className="App">
         <hr />
         <button onClick={this.togglePersonsHandler}>show me the persons!</button>
-        {this.state.displayPersons ? (
-          <div>
-            <Person nameChanger={this.personChangerHandler} personName={this.state.personname} />
-            <Person personName="Mr. Dummy Dummyster" />
-          </div>
-        ) : null}
-
+        {persons}
         <hr />
         <UserInput changed={this.nameChangerHandler} currentName={this.state.username} />
         <UserOutput userName={this.state.username} />
