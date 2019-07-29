@@ -17,10 +17,6 @@ class App extends Component {
     this.setState({ username: event.target.value });
   };
 
-  personChangerHandler = evet => {
-    this.setState({ personname: evet.target.value });
-  };
-
   togglePersonsHandler = () => {
     this.setState({ displayPersons: !this.state.displayPersons });
   };
@@ -31,6 +27,19 @@ class App extends Component {
     this.setState({ persons: persons });
   };
 
+  changePersonNameHandler = (event, id) => {
+    const personIndex = this.state.persons.findIndex(p => {
+      return p.id === id;
+    });
+    const person = { ...this.state.persons[personIndex] };
+
+    person.name = event.target.value;
+
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+    this.setState({ persons: persons });
+  };
+
   render() {
     let persons = null;
 
@@ -38,7 +47,7 @@ class App extends Component {
       persons = (
         <div>
           {this.state.persons.map((person, index) => {
-            return <Person key={person.id} personName={person.name} age={person.age} click={() => this.deletePersonHandler(index)} />;
+            return <Person key={person.id} personName={person.name} age={person.age} nameChanger={event => this.changePersonNameHandler(event, person.id)} click={() => this.deletePersonHandler(index)} />;
           })}
         </div>
       );
