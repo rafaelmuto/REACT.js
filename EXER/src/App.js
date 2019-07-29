@@ -10,7 +10,7 @@ class App extends Component {
     username: 'dummyUserName',
     personname: 'dummyPersonName',
     displayPersons: false,
-    persons: [{ name: 'dummyUser', age: 1 }, { name: 'Mr. Dummy Dummister', age: 64 }, { name: 'rafaelmuto', age: 33 }, { name: 'julianasumiya', age: 24 }]
+    persons: [{ id: 1, name: 'dummyUser', age: 1 }, { id: 2, name: 'Mr. Dummy Dummister', age: 64 }, { id: 3, name: 'rafaelmuto', age: 33 }, { id: 4, name: 'julianasumiya', age: 24 }]
   };
 
   nameChangerHandler = event => {
@@ -26,7 +26,7 @@ class App extends Component {
   };
 
   deletePersonHandler = personIndex => {
-    const persons = this.state.persons;
+    const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
     this.setState({ persons: persons });
   };
@@ -37,18 +37,15 @@ class App extends Component {
     if (this.state.displayPersons) {
       persons = (
         <div>
-          <Person nameChanger={this.personChangerHandler} personName={this.state.personname} />
-          <Person personName="Mr. Dummy Dummyster" />
+          {this.state.persons.map((person, index) => {
+            return <Person key={person.id} personName={person.name} age={person.age} click={() => this.deletePersonHandler(index)} />;
+          })}
         </div>
       );
     }
 
     return (
       <div className="App">
-        <hr />
-        {this.state.persons.map((person, index) => {
-          return <Person personName={person.name} click={() => this.deletePersonHandler(index)} />;
-        })}
         <hr />
         <button onClick={this.togglePersonsHandler}>show me the persons!</button>
         {persons}

@@ -5,3 +5,23 @@
 .App {
   margin: 16px;
 }
+
+button {
+  border: 1px solid black;
+  padding: 1rem;
+  box-shadow: 2px 2px black;
+  margin: 0.5rem;
+}
+
+button:hover {
+  background: #888;
+  color: white;
+  box-shadow: 0 0;
+  position: relative;
+  right: -2px;
+  top: 2px;
+}
+
+button:active {
+  background: red;
+}
