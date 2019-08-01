@@ -49,7 +49,6 @@ class App extends Component {
 
   charCounterHandler = event => {
     const string = event.target.value;
-    const chars = string.split('');
     this.setState({ charstring: string });
   };
 
