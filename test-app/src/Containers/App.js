@@ -2,6 +2,7 @@ import React, { Component } from './node_modules/react';
 import './App.css';
 
 import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
   state = {
@@ -39,16 +40,12 @@ class App extends Component {
     let persons = null;
 
     if (this.state.displayPersons) {
-      persons = (
-        <div>
-          <Persons persons={this.state.persons} clicked={this.deletePersonHandler} changed={this.changePersonNameHandler} />
-        </div>
-      );
+      persons = <Persons persons={this.state.persons} clicked={this.deletePersonHandler} changed={this.changePersonNameHandler} />;
     }
 
     return (
       <div className="App">
-        <button onClick={this.togglePersonsHandler}>show me the persons!</button>
+        <Cockpit clicked={this.togglePersonsHandler} />
         {persons}
       </div>
     );
