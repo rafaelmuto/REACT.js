@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import UserInput from './UserInput/UserInput';
-import UserOutput from './UserOutput/UserOutput';
-import Person from './Person/Person';
-import Charcount from './Charcount/Charcount';
-import CharComponent from './Charcomponent/Charcomponent';
+import UserInput from '../Components/UserInput/UserInput';
+import UserOutput from '../Components/UserOutput/UserOutput';
+import Person from '../Components/Person/Person';
+import Charcount from '../Components/Charcount/Charcount';
+import CharComponent from '../Components/Charcomponent/Charcomponent';
 
 class App extends Component {
   state = {

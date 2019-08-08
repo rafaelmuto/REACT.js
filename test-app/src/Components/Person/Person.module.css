@@ -1,4 +1,5 @@
 .Person {
+  margin: 0 auto;
   border: 1px dashed black;
   background-color: #eee;
   width: 66%;
