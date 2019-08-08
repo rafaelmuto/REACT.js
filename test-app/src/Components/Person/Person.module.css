@@ -1,5 +1,5 @@
 .Person {
-  margin: 0 auto;
+  margin: 1rem auto;
   border: 1px dashed black;
   background-color: #eee;
   width: 66%;
@@ -8,4 +8,9 @@
 
 .Person input {
   width: 100%;
+}
+
+.btn {
+  width: 90%;
+  margin: 1rem auto;
 }
