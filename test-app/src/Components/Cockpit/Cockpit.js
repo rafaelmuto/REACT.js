@@ -8,3 +8,5 @@ const cockpit = props => {
     </div>
   );
 };
+
+export default cockpit;

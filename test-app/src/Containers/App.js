@@ -1,4 +1,4 @@
-import React, { Component } from './node_modules/react';
+import React, { Component } from 'react';
 import './App.css';
 
 import Persons from '../components/Persons/Persons';
@@ -6,11 +6,8 @@ import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
   state = {
-    username: 'dummyUserName',
-    personname: 'dummyPersonName',
     displayPersons: false,
-    persons: [{ id: 1, name: 'dummyUser', age: 1 }, { id: 2, name: 'Mr. Dummy Dummister', age: 64 }, { id: 3, name: 'rafaelmuto', age: 33 }, { id: 4, name: 'julianasumiya', age: 24 }],
-    charstring: ''
+    persons: [{ id: 1, name: 'dummyUser', age: 1 }, { id: 2, name: 'Mr. Dummy Dummister', age: 64 }, { id: 3, name: 'rafaelmuto', age: 33 }, { id: 4, name: 'julianasumiya', age: 24 }, { id: 5, name: 'caioverissimo', age: 32 }]
   };
 
   togglePersonsHandler = () => {
