@@ -14,10 +14,11 @@ h4 {
 }
 
 .Person p {
-  text-align: right;
+  text-align: justify;
 }
 
 .Person input {
+  background-color: transparent;
   width: 100%;
   margin: 1rem 0;
   border: 0;
