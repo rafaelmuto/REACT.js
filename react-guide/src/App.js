@@ -4,13 +4,25 @@ import Person from './Person/Person';
 
 class App extends Component {
   state = {
-    persons: [{ name: 'Rafael', age: 33 }, { name: 'Juliana', age: 25 }, { name: 'Caio', age: 32 }]
+    persons: [{ id: 'p0', name: 'Rafael', age: 33 }, { id: 'p1', name: 'Juliana', age: 25 }, { id: 'p2', name: 'Caio', age: 32 }, { id: 'p3', name: 'Mayara', age: '24' }, { id: 'p4', name: 'David', age: '25' }, { id: 'p5', name: 'Renan', age: '27' }]
   };
 
   deletePersonHandler = personIndex => {
-    const personsUpdate = this.state.persons;
+    // const personsUpdate = this.state.persons.splice();
+    const personsUpdate = [...this.state.persons];
     personsUpdate.splice(personIndex, 1);
     this.setState({ persons: personsUpdate });
+  };
+
+  nameChangeHandler = (event, id) => {
+    const personIndex = this.state.persons.findIndex(element => element.id == id);
+    const person = { ...this.state.persons[personIndex] };
+    person.name = event.target.value;
+
+    const personsNew = [...this.state.persons];
+    personsNew[personIndex] = person;
+
+    this.setState({ persons: personsNew });
   };
 
   togglePersonsHandler = () => {
@@ -22,7 +34,7 @@ class App extends Component {
 
     if (this.state.showPersons) {
       personsList = this.state.persons.map((person, index) => {
-        return <Person name={person.name} age={person.age} click={() => this.deletePersonHandler(index)} />;
+        return <Person name={person.name} age={person.age} click={() => this.deletePersonHandler(index)} changed={event => this.nameChangeHandler(event, person.id)} />;
       });
     }
 
