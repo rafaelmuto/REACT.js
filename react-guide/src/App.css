@@ -5,6 +5,7 @@
 }
 
 button {
+  margin: 1rem 0;
   padding: 1rem 2rem;
   background-color: transparent;
   border: 1px solid black;
