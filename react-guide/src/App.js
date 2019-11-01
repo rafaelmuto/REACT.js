@@ -4,7 +4,7 @@ import Person from './Person/Person';
 
 class App extends Component {
   state = {
-    persons: [{ id: 'p0', name: 'Rafael', age: 33 }, { id: 'p1', name: 'Juliana', age: 25 }, { id: 'p2', name: 'Caio', age: 32 }, { id: 'p3', name: 'Mayara', age: '24' }, { id: 'p4', name: 'David', age: '25' }, { id: 'p5', name: 'Renan', age: '27' }]
+    persons: [{ id: 'p0', name: 'Rafael', age: 33 }, { id: 'p1', name: 'Juliana', age: 25 }, { id: 'p2', name: 'Caio', age: 32 }, { id: 'p3', name: 'Mayara', age: 24 }, { id: 'p4', name: 'David', age: 25 }, { id: 'p5', name: 'Renan', age: 27 }, { id: 'p6', name: 'Emanuele', age: 18 }, { key: 'p7', name: 'Leal', age: 26 }, { key: 'p8', name: 'Kayque', age: 18 }]
   };
 
   deletePersonHandler = personIndex => {
@@ -15,7 +15,7 @@ class App extends Component {
   };
 
   nameChangeHandler = (event, id) => {
-    const personIndex = this.state.persons.findIndex(element => element.id == id);
+    const personIndex = this.state.persons.findIndex(element => element.id === id);
     const person = { ...this.state.persons[personIndex] };
     person.name = event.target.value;
 
@@ -34,7 +34,7 @@ class App extends Component {
 
     if (this.state.showPersons) {
       personsList = this.state.persons.map((person, index) => {
-        return <Person name={person.name} age={person.age} click={() => this.deletePersonHandler(index)} changed={event => this.nameChangeHandler(event, person.id)} />;
+        return <Person key={person.id} name={person.name} age={person.age} click={() => this.deletePersonHandler(index)} changed={event => this.nameChangeHandler(event, person.id)} />;
       });
     }
 
