@@ -4,19 +4,6 @@
   width: 45rem;
 }
 
-.App p {
-  text-align: justify;
-  padding: 0 1rem;
-}
-
-button {
-  margin: 1rem 0;
-  padding: 1rem 2rem;
-  background-color: transparent;
-  border: 1px solid black;
-  border-radius: 2px;
-}
-
 hr {
   margin-top: 2rem;
   overflow: visible; /* For IE */
@@ -36,6 +23,7 @@ hr.glyph {
   color: #333;
   text-align: center;
 }
+
 hr.glyph:after {
   content: '§';
   display: inline-block;
