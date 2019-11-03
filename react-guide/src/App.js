@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 class App extends Component {
   state = {
@@ -35,7 +36,11 @@ class App extends Component {
 
     if (this.state.showPersons) {
       personsList = this.state.persons.map((person, index) => {
-        return <Person key={person.id} name={person.name} age={person.age} click={() => this.deletePersonHandler(index)} changed={event => this.nameChangeHandler(event, person.id)} />;
+        return (
+          <ErrorBoundary key={person.id}>
+            <Person name={person.name} age={person.age} click={() => this.deletePersonHandler(index)} changed={event => this.nameChangeHandler(event, person.id)} />
+          </ErrorBoundary>
+        );
       });
     }
 
@@ -47,11 +52,13 @@ class App extends Component {
         <p>Lorem esse deserunt amet consectetur dolore voluptate commodo ut ea nulla dolor. Dolor excepteur qui ad ipsum sunt cupidatat amet exercitation laborum anim pariatur ad. Velit ullamco sit minim ex qui qui amet cupidatat. Cupidatat voluptate fugiat cupidatat ut reprehenderit cillum id labore cillum est sint officia.</p>
         <p>In nulla commodo commodo est minim nostrud Lorem dolor irure ullamco sint est. Proident laborum culpa voluptate velit enim irure proident esse dolor et sint aute pariatur. Eiusmod in labore culpa voluptate ut consectetur nisi aliqua dolor reprehenderit officia cillum. Aliquip Lorem proident excepteur eu in dolore aute cillum Lorem reprehenderit ex labore irure pariatur.</p>
         <p>Occaecat proident exercitation enim dolore Lorem consectetur minim. Aliqua sit eiusmod adipisicing deserunt id fugiat non. Aute veniam magna do ullamco minim nostrud labore pariatur. Ut ad reprehenderit dolor nisi nostrud et.</p>
+
+        <button onClick={this.togglePersonsHandler}>click ME!</button>
+
         <hr />
 
         {personsList}
 
-        <button onClick={this.togglePersonsHandler}>click ME!</button>
         <hr className="glyph" />
       </div>
     );
