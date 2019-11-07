@@ -40,7 +40,10 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Cockpit clicked={this.togglePersonsHandler}>{personsList}</Cockpit>
+        <Cockpit clicked={this.togglePersonsHandler}>
+          {personsList}
+          <hr />
+        </Cockpit>
       </div>
     );
   }
