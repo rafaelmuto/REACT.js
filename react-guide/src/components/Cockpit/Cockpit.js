@@ -1,9 +1,12 @@
 import React from 'react';
 import style from './Cockpit.module.css';
 
+import withClass from '../../hoc/withClass';
+import Aux from '../../hoc/Aux';
+
 const cockpit = props => {
   return (
-    <div className={style.Cockpit}>
+    <Aux>
       <hr />
       <h1>Hi, this is a REACT app!</h1>
       <hr />
@@ -22,7 +25,7 @@ const cockpit = props => {
       <h3>Update</h3>
       <ol>
         <li>getDerivedFromProps(props, state)</li>
-        <li>shoulComponentUpdate(nextProps, nextState)</li>
+        <li>shouldComponentUpdate(nextProps, nextState)</li>
         <li>render()</li>
         <li>getSnapshotBeforeUpdade(prevProps, prevState)</li>
         <li>componentDidUpdate() </li>
@@ -33,8 +36,8 @@ const cockpit = props => {
       </button>
       {props.children}
       <hr className="glyph" />
-    </div>
+    </Aux>
   );
 };
 
-export default cockpit;
+export default withClass(cockpit, style.Cockpit);
