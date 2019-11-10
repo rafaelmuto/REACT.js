@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './Person.module.css';
 import Lorem from '../../Lorem/Lorem';
@@ -18,6 +19,13 @@ const person = props => {
       <hr className="glyph" />
     </div>
   );
+};
+
+person.propTypes = {
+  click: PropTypes.func,
+  name: PropTypes.string,
+  age: PropTypes.number,
+  changed: PropTypes.func
 };
 
 export default person;

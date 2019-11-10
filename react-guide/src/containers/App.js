@@ -5,7 +5,7 @@ import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
   state = {
-    persons: [{ id: 'p0', name: 'Rafael', age: 33 }, { id: 'p1', name: 'Juliana', age: 25 }, { id: 'p2', name: 'Caio', age: 32 }, { id: 'p3', name: 'Mayara', age: 24 }, { id: 'p4', name: 'David', age: 25 }, { id: 'p5', name: 'Renan', age: 27 }, { id: 'p6', name: 'Emanuele', age: 18 }, { id: 'p7', name: 'Leal', age: 26 }, { id: 'p8', name: 'Kayque', age: 18 }, { id: 'p9', name: 'Eumesmo', age: '00' }],
+    persons: [{ id: 'p0', name: 'Rafael', age: 33 }, { id: 'p1', name: 'Juliana', age: 25 }, { id: 'p2', name: 'Caio', age: 32 }, { id: 'p3', name: 'Mayara', age: 24 }, { id: 'p4', name: 'David', age: 25 }, { id: 'p5', name: 'Renan', age: 27 }, { id: 'p6', name: 'Emanuele', age: 18 }, { id: 'p7', name: 'Leal', age: 26 }, { id: 'p8', name: 'Kayque', age: 18 }, { id: 'p9', name: 'Eumesmo', age: 0 }],
     showPersons: false
   };
 
