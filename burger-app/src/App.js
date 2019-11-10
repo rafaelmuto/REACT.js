@@ -1,7 +1,15 @@
 import React from 'react';
 
+import Layout from './components/Layout/Layout';
+
 function App() {
-  return <div>React Burger App</div>;
+  return (
+    <div>
+      <Layout>
+        <p>React Burger App!</p>
+      </Layout>
+    </div>
+  );
 }
 
 export default App;
