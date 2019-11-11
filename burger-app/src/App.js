@@ -4,13 +4,13 @@ import Layout from './components/Layout/Layout';
 import BurderBuilder from './containers/BurgerBuilder/BurgerBuilder';
 
 function App() {
-  return (
-    <div>
-      <Layout>
-        <BurderBuilder />
-      </Layout>
-    </div>
-  );
+	return (
+		<div>
+			<Layout>
+				<BurderBuilder />
+			</Layout>
+		</div>
+	);
 }
 
 export default App;
