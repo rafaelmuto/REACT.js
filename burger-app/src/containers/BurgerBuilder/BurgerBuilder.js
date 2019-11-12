@@ -83,7 +83,7 @@ class BurderBuilder extends Component {
 		}
 		return (
 			<Aux>
-				<Modal show={this.state.purchasing}>
+				<Modal show={this.state.purchasing} modalClose={this.purchaseHandler}>
 					<OrderSummary ingredients={this.state.ingredients} />
 				</Modal>
 				<Burger ingredients={this.state.ingredients} />
