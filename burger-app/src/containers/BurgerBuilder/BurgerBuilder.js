@@ -76,6 +76,23 @@ class BurderBuilder extends Component {
 		this.setState({ purchasing: !this.state.purchasing });
 	};
 
+	purchaseContinueHandler = () => {
+		alert('you got a buger!!!');
+		this.purchaseHandler();
+	};
+
+	bugerResetHandler = () => {
+		this.setState({
+			ingredients: {
+				salad: 0,
+				bacon: 0,
+				cheese: 0,
+				meat: 0
+			}
+		});
+		this.purchaseHandler();
+	};
+
 	render() {
 		const disabledInfo = { ...this.state.ingredients };
 		for (let key in disabledInfo) {
@@ -84,7 +101,11 @@ class BurderBuilder extends Component {
 		return (
 			<Aux>
 				<Modal show={this.state.purchasing} modalClose={this.purchaseHandler}>
-					<OrderSummary ingredients={this.state.ingredients} />
+					<OrderSummary
+						ingredients={this.state.ingredients}
+						purchaseCancelled={this.bugerResetHandler}
+						purchaseContinued={this.purchaseContinueHandler}
+					/>
 				</Modal>
 				<Burger ingredients={this.state.ingredients} />
 				<BuildControls
