@@ -1,0 +1,8 @@
+.OrderSummary {
+	font-family: monospace;
+	text-align: center;
+}
+
+.OrderSummary ul li {
+	list-style-type: none;
+}
