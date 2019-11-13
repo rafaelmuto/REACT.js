@@ -89,9 +89,9 @@ class BurderBuilder extends Component {
 				cheese: 0,
 				meat: 0
 			},
-			totalPrice: 4
+			totalPrice: 4,
+			purchasing: false
 		});
-		this.purchaseHandler();
 	};
 
 	render() {
@@ -116,6 +116,7 @@ class BurderBuilder extends Component {
 					price={this.state.totalPrice}
 					purchasable={this.state.purchasable}
 					order={this.purchaseHandler}
+					reset={this.bugerResetHandler}
 				/>
 			</Aux>
 		);

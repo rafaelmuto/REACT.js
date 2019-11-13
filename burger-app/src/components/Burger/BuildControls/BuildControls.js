@@ -28,6 +28,12 @@ const buildControls = props => {
 			<button className={style.OrderButton} disabled={!props.purchasable} onClick={props.order}>
 				ORDER NOW!
 			</button>
+			<a
+				onClick={props.reset}
+				style={{ marginTop: '.5rem', padding: '0 .5rem', border: '1px solid black', borderRadius: '2px' }}
+			>
+				reset
+			</a>
 		</div>
 	);
 };
