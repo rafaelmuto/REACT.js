@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import axiosOrders from '../../axios-orders';
+
 import Aux from '../../hoc/Aux/Aux';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
@@ -77,7 +79,29 @@ class BurderBuilder extends Component {
 	};
 
 	purchaseContinueHandler = () => {
-		alert('you got a buger!!!');
+		const order = {
+			ingredients: this.state.ingredients,
+			price: this.state.totalPrice,
+			customer: {
+				name: 'eumesmo',
+				address: {
+					street: 'semnome',
+					zipCode: '12345678',
+					country: 'nowhere'
+				},
+				email: 'eumesmo@qualquerum.ai'
+			},
+			deliveryMethod: 'fastest'
+		};
+		axiosOrders
+			.post('/orders.json', order)
+			.then(res => {
+				console.log(res);
+			})
+			.catch(err => {
+				console.log(err);
+			});
+
 		this.purchaseHandler();
 	};
 
