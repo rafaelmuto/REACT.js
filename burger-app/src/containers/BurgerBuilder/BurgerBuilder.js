@@ -7,6 +7,9 @@ import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
+import Spinner from '../../components/UI/Spinner/Spinner';
+
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
 const INGREDIENT_PRICES = {
 	salad: 0.5,
@@ -27,7 +30,8 @@ class BurderBuilder extends Component {
 			},
 			totalPrice: 4,
 			purchasable: false,
-			purchasing: false
+			purchasing: false,
+			loading: false
 		};
 	}
 
@@ -79,6 +83,7 @@ class BurderBuilder extends Component {
 	};
 
 	purchaseContinueHandler = () => {
+		this.setState({ loading: true });
 		const order = {
 			ingredients: this.state.ingredients,
 			price: this.state.totalPrice,
@@ -96,10 +101,10 @@ class BurderBuilder extends Component {
 		axiosOrders
 			.post('/orders.json', order)
 			.then(res => {
-				console.log(res);
+				this.setState({ loading: false, purchasing: false });
 			})
 			.catch(err => {
-				console.log(err);
+				this.setState({ loading: false, purchasing: false });
 			});
 
 		this.purchaseHandler();
@@ -123,15 +128,23 @@ class BurderBuilder extends Component {
 		for (let key in disabledInfo) {
 			disabledInfo[key] = disabledInfo[key] <= 0;
 		}
+
+		let orderSummary = (
+			<OrderSummary
+				ingredients={this.state.ingredients}
+				purchaseCancelled={this.bugerResetHandler}
+				purchaseContinued={this.purchaseContinueHandler}
+				price={this.state.totalPrice}
+			/>
+		);
+		if (this.state.loading) {
+			orderSummary = <Spinner />;
+		}
+
 		return (
 			<Aux>
 				<Modal show={this.state.purchasing} modalClose={this.purchaseHandler}>
-					<OrderSummary
-						ingredients={this.state.ingredients}
-						purchaseCancelled={this.bugerResetHandler}
-						purchaseContinued={this.purchaseContinueHandler}
-						price={this.state.totalPrice}
-					/>
+					{orderSummary}
 				</Modal>
 				<Burger ingredients={this.state.ingredients} />
 				<BuildControls
@@ -148,4 +161,4 @@ class BurderBuilder extends Component {
 	}
 }
 
-export default BurderBuilder;
+export default withErrorHandler(BurderBuilder, axiosOrders);
