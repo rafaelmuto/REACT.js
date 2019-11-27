@@ -17,7 +17,7 @@ class Blog extends Component {
 		axios
 			.get('/posts')
 			.then(res => {
-				const posts = res.data.slice(0, 4);
+				const posts = res.data.slice(0, 8);
 				const updatedPosts = posts.map(post => {
 					return {
 						...post,
@@ -52,7 +52,19 @@ class Blog extends Component {
 		}
 
 		return (
-			<div>
+			<div class="Blog">
+				<header>
+					<nav>
+						<ul>
+							<li>
+								<a href="/">Home</a>
+							</li>
+							<li>
+								<a href="/new-post">New Post</a>
+							</li>
+						</ul>
+					</nav>
+				</header>
 				<section className="Posts">{posts}</section>
 				<section>
 					<FullPost id={this.state.selectedPostId} />
