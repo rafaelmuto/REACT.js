@@ -4,6 +4,7 @@ import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
 import './Blog.css';
 import Posts from './Posts/Posts';
 
+// see React_Lazy_Loading for an alternative
 import asyncComponent from '../../hoc/asyncComponent';
 const AsyncNewPost = asyncComponent(() => {
   return import('./NewPost/NewPost');

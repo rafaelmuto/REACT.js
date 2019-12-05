@@ -1,0 +1,8 @@
+.App nav {
+  font-size: 2rem;
+}
+
+.active {
+  background-color: black;
+  color: white;
+}
