@@ -88,32 +88,6 @@ class BurderBuilder extends Component {
   };
 
   purchaseContinueHandler = () => {
-    // this.setState({ loading: true });
-    // const order = {
-    // 	ingredients: this.state.ingredients,
-    // 	price: this.state.totalPrice,
-    // 	customer: {
-    // 		name: 'eumesmo',
-    // 		address: {
-    // 			street: 'semnome',
-    // 			zipCode: '12345678',
-    // 			country: 'nowhere'
-    // 		},
-    // 		email: 'eumesmo@qualquerum.ai'
-    // 	},
-    // 	deliveryMethod: 'fastest'
-    // };
-    // axios
-    // 	.post('/orders.json', order)
-    // 	.then(res => {
-    // 		this.setState({ loading: false, purchasing: false });
-    // 	})
-    // 	.catch(err => {
-    // 		this.setState({ loading: false, purchasing: false });
-    // 	});
-
-    // this.purchaseHandler();
-
     const queryParams = [];
     for (let i in this.state.ingredients) {
       queryParams.push(
@@ -122,7 +96,7 @@ class BurderBuilder extends Component {
           encodeURIComponent(this.state.ingredients[i])
       );
     }
-
+    queryParams.push('price=' + this.state.totalPrice);
     const queryString = queryParams.join('&');
 
     this.props.history.push({
